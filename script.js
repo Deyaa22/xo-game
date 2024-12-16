@@ -3,6 +3,9 @@ let board = Array(9).fill(null);
 let currentPlayer = 'X';
 let gameOver = false;
 
+let scoreX = 0;
+let scoreO = 0;
+
 function makeMove(index) {
     if (gameOver || board[index] !== null) return; // Prevent move if cell is filled or game is over
 
@@ -11,6 +14,7 @@ function makeMove(index) {
     
     if (checkWinner()) {
         document.getElementById('message').innerText = `${currentPlayer} wins!`;
+        updateScore();
         gameOver = true;
     } else if (board.every(cell => cell !== null)) {
         document.getElementById('message').innerText = 'It\'s a draw!';
@@ -31,6 +35,16 @@ function checkWinner() {
         const [a, b, c] = pattern;
         return board[a] && board[a] === board[b] && board[a] === board[c];
     });
+}
+
+function updateScore() {
+    if (currentPlayer === 'X') {
+        scoreX++;
+        document.getElementById('score-x').innerText = `X: ${scoreX}`;
+    } else {
+        scoreO++;
+        document.getElementById('score-o').innerText = `O: ${scoreO}`;
+    }
 }
 
 function resetGame() {

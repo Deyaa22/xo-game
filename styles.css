@@ -24,6 +24,17 @@ body {
     width: 400px;
 }
 
+.score-board {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+#score-x, #score-o {
+    font-weight: bold;
+}
+
 .board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
